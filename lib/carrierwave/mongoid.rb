@@ -29,6 +29,7 @@ module CarrierWave
       after_save :"store_#{column}!"
       before_save :"write_#{column}_identifier"
       after_destroy :"remove_#{column}!"
+      after_save :"store_previous_changes_for_#{column}"
       after_save :"remove_previously_stored_#{column}"
 
       class_eval <<-RUBY, __FILE__, __LINE__+1
